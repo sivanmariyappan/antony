@@ -1,5 +1,38 @@
 print("hello world")
 
+
+
+// bloc line
+  baseResponse?.data = baseResponse.data != null
+          ? List<AddAttendees>.from(
+              baseResponse.data.map((data) => AddAttendees.fromJson(data)))
+          : null;
+
+// ui screen
+//init function top add the variable ,i this allready declear the variable
+ List<AddAttendees> addAttendees=[]
+ bool addAttendees_status=false;
+
+
+if(value.status!=false && value.data.length!=0){
+  setStates((){
+    addAttendees=value.data;
+    addAttendees_status=true;
+  });
+}
+
+//contineu button
+
+if(addAttendees_status){
+  setStetes((){
+    activeStep=activeStep+1
+  });
+}
+
+
+
+
+
 Duration calculateTimeDifference({
   required String startDate,
   required String endDate,
