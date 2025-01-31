@@ -80,3 +80,58 @@ Duration calculateTimeDifference({
       startTime: startTime,
       endTime: endTime,
     );
+
+
+
+
+///latest update code
+
+
+Duration calculateTimeDifference({
+  required String startDate,
+  required String endDate,
+  required String startTime,
+  required String endTime,
+}) {
+// Parse the starting date and time
+  DateTime startDateTime = parseDateTime(startingDate, startingTime);
+
+  // Parse the ending date and time
+  DateTime endDateTime = parseDateTime(endingDate, endingTime);
+
+  DateTime currentDateTime = DateTime.now(); // Get the current date and time
+
+  // If the current time is after the start time
+  if (currentDateTime.isAfter(startDateTime)) {
+    // Calculate the difference between current time and end time
+    return endDateTime.difference(currentDateTime);
+  } else {
+    return  Duration();
+  }
+}
+
+
+DateTime parseDateTime(String date, String time) {
+  // Parse the date (we will ignore time portion from the date string)
+  DateTime datePart = DateTime.parse(date);
+
+  // Split the time into hours and minutes
+  List<String> timeParts = time.split(":");
+  int hour = int.parse(timeParts[0]);
+  int minute = int.parse(timeParts[1]);
+
+  // Combine the date and time
+  return DateTime(datePart.year, datePart.month, datePart.day, hour, minute);
+}
+
+
+
+ Duration difference = calculateTimeDifference(
+      startDate: startDate,
+      endDate: endDate,
+      startTime: startTime,
+      endTime: endTime,
+    );
+
+
+
