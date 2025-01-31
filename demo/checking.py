@@ -134,4 +134,16 @@ DateTime parseDateTime(String date, String time) {
     );
 
 
+///time to add 5.30 minues
+String addTime(String timeStr) {
+  final DateFormat format = DateFormat("hh:mm");
+  DateTime time = format.parse(timeStr);
+  
+  // Add 5 hours and 30 minutes
+  time = time.add(Duration(hours: 5, minutes: 30));
+  
+  // Return the updated time in 12-hour AM/PM format
+  return DateFormat("hh:mm a").format(time);
+}
+
 
