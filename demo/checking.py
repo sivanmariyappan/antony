@@ -146,4 +146,29 @@ String addTime(String timeStr) {
   return DateFormat("hh:mm a").format(time);
 }
 
+//dynamic data create model
+class DynamicData {
+  final dynamic data; // Can be any type of data
+
+  DynamicData({
+  
+    this.data,
+  });
+
+  // Manually create the fromJson method
+  DynamicData fromJson(Map<String, dynamic> json) {
+    return DynamicData(
+      data: json['data'],  // This can be dynamic
+    );
+  }
+
+  // Manually create the toJson method
+  Map<String, dynamic> toJson() {
+    return {
+      'data': data,
+    };
+  }
+}
+
+
 
