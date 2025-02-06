@@ -1,5 +1,63 @@
 print("hello world")
 
+//timer coundown start
+
+
+
+
+
+late Timer _timer;
+  int? _start; // OTP expiry time in seconds
+  bool _isExpired = false;
+
+//important for this part
+  @override
+  void dispose() {
+    _timer.cancel(); // Ensure the timer is cancelled when widget is disposed
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_start > 0) {
+        setState(() {
+          _start--;
+        });
+      } else {
+        setState(() {
+          _isExpired = true;
+        });
+        _timer.cancel(); // Stop the timer when expired
+      }
+    });
+  }
+
+
+//ui part
+Center(
+        child: _isExpired
+            ? Text("OTP Expired", style: TextStyle(fontSize: 24, color: Colors.red))
+            : Text("Time remaining: $_start seconds", style: TextStyle(fontSize: 24)),
+      ),
+
+
+//ticket table reservation api call area  status true
+
+
+  if(value.status==true){
+    //intha mari condition irukum athula intha line add panniko
+intha api cal la vara  colsebooking time kuda 60
+var secount=colsebookingtime*60;
+setstate((){
+  _start=secount;
+})
+ _startTimer();
+  }
+
+
+
+
+
 
 
 // bloc line
